@@ -18,7 +18,7 @@ router.get("/notes", function (req, res) {
 router.post("/notes", function (req, res) {
      console.log("hi this is post");
      let newNote = {
-          id: Math.random() * 100,
+          id: Math.floor(Math.random() * 100),
           title: req.body.title,
           text: req.body.text,
      };
