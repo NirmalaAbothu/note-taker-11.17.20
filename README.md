@@ -12,7 +12,7 @@
 
 This application is about Note Taker from Command Line Interface
 This application allows user to add notes.
-First applicatin displays prevously saved notes in Note Taker section in leftside of the app.
+First applicatin displays previous saved notes in Note Taker section in left side of the app.
 In the middle of app displays with place holders as Note Title and Note Text,user can enter Note
 Title and Note Text in place holder's section and click save button on right side of the upper corner,
 refresh the page then newly added notes will be added to Note Taker section.If user wants add more notes ,
@@ -33,6 +33,11 @@ Node modules
 -    express
 -    fs : to interact with I/O file system
 -    path : to create the directory
+
+## Challenges
+
+-    Get challenged while developing api routes for fetching data from db to display on browser
+     and finally figured out thru creating, const router = require("express").Router() and export router.
 
 ## Getting Started
 
