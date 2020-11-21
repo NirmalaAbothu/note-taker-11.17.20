@@ -1,3 +1,4 @@
+// required packages
 const fs = require("fs");
 const path = require("path");
 const db = require("../db/db.json");
@@ -28,8 +29,7 @@ router.post("/notes", function (req, res) {
           if (err) throw err;
           var dbdata = JSON.parse(data);
           dbdata.push(newNote);
-          // console.log(dbdata);
-          // res.send(newNote);
+
           fs.writeFileSync("./db/db.json", JSON.stringify(dbdata), function (
                err
           ) {
