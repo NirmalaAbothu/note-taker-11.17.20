@@ -4,7 +4,7 @@
 
 ---
 
-![alt text](images/Image3.PNG)
+![alt text](images/image3.PNG)
 
 ![alt text](images/Image1.PNG)
 
