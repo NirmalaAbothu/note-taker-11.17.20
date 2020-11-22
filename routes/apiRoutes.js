@@ -35,15 +35,15 @@ router.post("/notes", function (req, res) {
      console.log(__dirname);
      console.log(__filename);
      console.log("./db/db.json");
-     fs.readFile("./db/db.json", "utf8", (err, data) => {
-          // fs.readFile(db, "utf8", (err, data) => {
-          // fs.readFile(db, "utf8", (err, data) => {
+     // fs.readFile("./db/db.json", "utf8", (err, data) => {
+     // fs.readFile(db, "utf8", (err, data) => {
+     fs.readFile(`${__dirname}/../db/db.json`, "utf8", (err, data) => {
           if (err) throw err;
           var dbdata = JSON.parse(data);
           dbdata.push(newNote);
 
           fs.writeFileSync(
-               "./db/db.json",
+               "${__dirname}/../db/db.json",
                JSON.stringify(dbdata),
                function (err) {
                     // fs.writeFileSync(db, JSON.stringify(dbdata), function (err) {
@@ -59,13 +59,13 @@ router.post("/notes", function (req, res) {
 //api call to delete item from db.json file
 router.delete("/notes/:id", function (req, res) {
      let idTodelete = req.params.id;
-     fs.readFile("./db/db.json", "utf8", (err, data) => {
+     fs.readFile(`${__dirname}/../db/db.json`, "utf8", (err, data) => {
           if (err) throw err;
           var dbdata = JSON.parse(data);
           var newNotes = dbdata.filter((note) => note.id != idTodelete);
 
           fs.writeFileSync(
-               "./db/db.json",
+               "${__dirname}/../db/db.json",
                JSON.stringify(newNotes),
                function (err) {
                     if (err) throw err;
