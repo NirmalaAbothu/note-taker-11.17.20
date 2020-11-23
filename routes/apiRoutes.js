@@ -62,7 +62,8 @@ router.post("/notes", function (req, res) {
                     function (err) {
                          if (err) throw err;
                          console.log(dbdata);
-                         res.send(newNote);
+                         // res.send(newNote);
+                         res.status(200).end();
                     }
                );
           }
@@ -86,7 +87,8 @@ router.delete("/notes/:id", function (req, res) {
                     function (err) {
                          if (err) throw err;
                          console.log("note deleted");
-                         res.send(db);
+                         // res.send(db);
+                         res.status(200).end();
                     }
                );
           }
