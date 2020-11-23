@@ -7,6 +7,7 @@ const path = require("path");
 // const db = require("../db/db.json");
 const db = require("../db/db.json");
 const router = require("express").Router();
+var timeout = require("connect-timeout");
 console.log("this is api routes");
 const db1 = path.join(__dirname, "..", "db", "db.json");
 console.log(db);
@@ -31,6 +32,7 @@ router.get("/notes", function (req, res) {
 //api call to save the data to db.json file
 router.post("/notes", function (req, res) {
      console.log("hi this is post");
+
      // console.log(__dirname);
      // console.log(__filename);
      let newNote = {
@@ -43,6 +45,7 @@ router.post("/notes", function (req, res) {
 
      // fs.readFile("./db/db.json", "utf8", (err, data) => {
      // fs.readFile("./db/db.json", "utf8", (err, data) => {
+     req.setTimeout(50000);
      fs.readFile(
           path.join(__dirname, "..", "db", "db.json"),
           "utf8",
@@ -73,6 +76,7 @@ router.post("/notes", function (req, res) {
 //api call to delete item from db.json file
 router.delete("/notes/:id", function (req, res) {
      let idTodelete = req.params.id;
+     req.setTimeout(50000);
      fs.readFile(
           path.join(__dirname, "..", "db", "db.json"),
           "utf8",
@@ -94,4 +98,5 @@ router.delete("/notes/:id", function (req, res) {
           }
      );
 });
+
 module.exports = router;

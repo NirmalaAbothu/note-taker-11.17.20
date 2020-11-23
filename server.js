@@ -5,6 +5,7 @@ var express = require("express");
 const htmlRoutes = require("./routes/html-routes");
 
 const apiRoutes = require("./routes/apiRoutes");
+var timeout = require("connect-timeout");
 
 // Sets up the Express App
 // =============================================================
