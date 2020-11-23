@@ -12,14 +12,7 @@ console.log("this is api routes");
 const db1 = path.join(__dirname, "..", "db", "db.json");
 console.log(db);
 console.log(db1);
-// console.log(__dirname);
-// const OUTPUT_DIR = path.resolve(__dirname, "./db");
-// console.log(OUTPUT_DIR);
-//creating  file in output folder
-// const outputPath = path.join(OUTPUT_DIR, "db.json");
-// console.log(outputPath);
 
-//api call to display notes from db.json
 router.get("/notes", function (req, res) {
      console.log(db);
      var count = Object.keys(db).length;
@@ -32,7 +25,7 @@ router.get("/notes", function (req, res) {
 //api call to save the data to db.json file
 router.post("/notes", function (req, res) {
      console.log("hi this is post");
-
+     var dbdata;
      // console.log(__dirname);
      // console.log(__filename);
      let newNote = {
@@ -43,30 +36,27 @@ router.post("/notes", function (req, res) {
 
      //read db.json file
 
-     // fs.readFile("./db/db.json", "utf8", (err, data) => {
-     // fs.readFile("./db/db.json", "utf8", (err, data) => {
-     req.setTimeout(50000);
      fs.readFile(
           path.join(__dirname, "..", "db", "db.json"),
           "utf8",
           (err, data) => {
                if (err) throw err;
-               var dbdata = JSON.parse(data);
-               dbdata.push(newNote);
+               else {
+                    dbdata = JSON.parse(data);
+                    dbdata.push(newNote);
+               }
 
-               // fs.writeFileSync(
-               // "${__dirname}/../db/db.json",
-               // JSON.stringify(dbdata),
-               // function (err) {
-               // fs.writeFileSync(db, JSON.stringify(dbdata), function (err) {
                fs.writeFileSync(
                     path.join(__dirname, "..", "db", "db.json"),
                     JSON.stringify(dbdata),
                     function (err) {
                          if (err) throw err;
-                         console.log(dbdata);
-                         // res.send(newNote);
-                         res.status(200).end();
+                         else {
+                              console.log(dbdata);
+                              // res.send(newNote);
+
+                              res.status(200).end();
+                         }
                     }
                );
           }
