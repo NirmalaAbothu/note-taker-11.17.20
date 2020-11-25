@@ -33,22 +33,29 @@ router.post("/notes", function (req, res) {
           title: req.body.title,
           text: req.body.text,
      };
+     // console.log(req.body);
+     // res.json(req.body);
 
      //read db.json file
-
+     // dbdata = JSON.parse(db);
+     // dbdata.push(newNote);
+     // res.json(db);
+     console.log("outside");
      fs.readFile(path.join(__dirname, "../db/db.json"), "utf8", (err, data) => {
           if (err) throw err;
           else {
+               console.log("1");
                dbdata = JSON.parse(data);
                dbdata.push(newNote);
           }
-
+          console.log("2");
           fs.writeFileSync(
                path.join(__dirname, "../db/db.json"),
                JSON.stringify(dbdata),
                function (err) {
                     if (err) throw err;
                     else {
+                         console.log("3");
                          console.log(dbdata);
                          // res.send(newNote);
 
