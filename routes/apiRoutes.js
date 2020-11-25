@@ -26,8 +26,8 @@ router.get("/notes", function (req, res) {
 router.post("/notes", function (req, res) {
      console.log("hi this is post");
      var dbdata;
-     // console.log(__dirname);
-     // console.log(__filename);
+     console.log(__dirname);
+     console.log(__dirname, "../db/db.json");
      let newNote = {
           id: Math.floor(Math.random() * 100),
           title: req.body.title,
@@ -36,37 +36,33 @@ router.post("/notes", function (req, res) {
 
      //read db.json file
 
-     fs.readFile(
-          path.join(__dirname, "..", "db", "db.json"),
-          "utf8",
-          (err, data) => {
-               if (err) throw err;
-               else {
-                    dbdata = JSON.parse(data);
-                    dbdata.push(newNote);
-               }
-
-               fs.writeFileSync(
-                    path.join(__dirname, "..", "db", "db.json"),
-                    JSON.stringify(dbdata),
-                    function (err) {
-                         if (err) throw err;
-                         else {
-                              console.log(dbdata);
-                              // res.send(newNote);
-
-                              res.status(200).end();
-                         }
-                    }
-               );
+     fs.readFile(path.join(__dirname, "../db/db.json"), "utf8", (err, data) => {
+          if (err) throw err;
+          else {
+               dbdata = JSON.parse(data);
+               dbdata.push(newNote);
           }
-     );
+
+          fs.writeFileSync(
+               path.join(__dirname, "../db/db.json"),
+               JSON.stringify(dbdata),
+               function (err) {
+                    if (err) throw err;
+                    else {
+                         console.log(dbdata);
+                         // res.send(newNote);
+
+                         res.status(200).end();
+                    }
+               }
+          );
+     });
 });
 
 //api call to delete item from db.json file
 router.delete("/notes/:id", function (req, res) {
      let idTodelete = req.params.id;
-     req.setTimeout(50000);
+     // req.setTimeout(50000);
      fs.readFile(
           path.join(__dirname, "..", "db", "db.json"),
           "utf8",
