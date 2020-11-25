@@ -1,10 +1,6 @@
 // required packages
 const fs = require("fs");
 const path = require("path");
-// const resolve = require("path").resolve;
-// const db = require(resolve("./db/db.json"));
-// console.log(db);
-// const db = require("../db/db.json");
 const db = require("../db/db.json");
 const router = require("express").Router();
 var timeout = require("connect-timeout");
@@ -33,15 +29,7 @@ router.post("/notes", function (req, res) {
           title: req.body.title,
           text: req.body.text,
      };
-     // console.log(req.body);
-     // res.json(req.body);
-
-     //read db.json file
-     // dbdata = JSON.parse(db);
-     // dbdata.push(newNote);
-     // res.json(db);
      console.log("outside");
-     // fs.readFile(path.join(__dirname, "../db/db.json"), "utf8", (err, data) => {
      fs.readFile("./db/db.json", "utf8", (err, data) => {
           if (err) throw err;
           else {
@@ -58,7 +46,6 @@ router.post("/notes", function (req, res) {
                     else {
                          console.log("3");
                          console.log(dbdata);
-                         // res.send(newNote);
 
                          res.status(200).end();
                     }
@@ -70,7 +57,7 @@ router.post("/notes", function (req, res) {
 //api call to delete item from db.json file
 router.delete("/notes/:id", function (req, res) {
      let idTodelete = req.params.id;
-     // req.setTimeout(50000);
+
      fs.readFile("./db/db.json", "utf8", (err, data) => {
           if (err) throw err;
           var dbdata = JSON.parse(data);
@@ -82,7 +69,7 @@ router.delete("/notes/:id", function (req, res) {
                function (err) {
                     if (err) throw err;
                     console.log("note deleted");
-                    // res.send(db);
+
                     res.status(200).end();
                }
           );
