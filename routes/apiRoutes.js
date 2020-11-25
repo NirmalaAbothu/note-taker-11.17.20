@@ -41,7 +41,8 @@ router.post("/notes", function (req, res) {
      // dbdata.push(newNote);
      // res.json(db);
      console.log("outside");
-     fs.readFile(path.join(__dirname, "../db/db.json"), "utf8", (err, data) => {
+     // fs.readFile(path.join(__dirname, "../db/db.json"), "utf8", (err, data) => {
+     fs.readFile("./db/db.json", "utf8", (err, data) => {
           if (err) throw err;
           else {
                console.log("1");
@@ -50,7 +51,7 @@ router.post("/notes", function (req, res) {
           }
           console.log("2");
           fs.writeFileSync(
-               path.join(__dirname, "../db/db.json"),
+               "./db/db.json",
                JSON.stringify(dbdata),
                function (err) {
                     if (err) throw err;
@@ -70,26 +71,22 @@ router.post("/notes", function (req, res) {
 router.delete("/notes/:id", function (req, res) {
      let idTodelete = req.params.id;
      // req.setTimeout(50000);
-     fs.readFile(
-          path.join(__dirname, "..", "db", "db.json"),
-          "utf8",
-          (err, data) => {
-               if (err) throw err;
-               var dbdata = JSON.parse(data);
-               var newNotes = dbdata.filter((note) => note.id != idTodelete);
+     fs.readFile("./db/db.json", "utf8", (err, data) => {
+          if (err) throw err;
+          var dbdata = JSON.parse(data);
+          var newNotes = dbdata.filter((note) => note.id != idTodelete);
 
-               fs.writeFileSync(
-                    path.join(__dirname, "..", "db", "db.json"),
-                    JSON.stringify(newNotes),
-                    function (err) {
-                         if (err) throw err;
-                         console.log("note deleted");
-                         // res.send(db);
-                         res.status(200).end();
-                    }
-               );
-          }
-     );
+          fs.writeFileSync(
+               "./db/db.json",
+               JSON.stringify(newNotes),
+               function (err) {
+                    if (err) throw err;
+                    console.log("note deleted");
+                    // res.send(db);
+                    res.status(200).end();
+               }
+          );
+     });
 });
 
 module.exports = router;
