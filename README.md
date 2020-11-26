@@ -44,7 +44,8 @@ Node modules
      -    AskBCS Learing Assistant: they mentioned due to read and File system in api routes, app in not working on Heroku,
           then i removed read and write files and tried to save the notes but the saved data is not remaining in db.json file,
           it will be disappeared once the app close.
-     -    Contacted TA tried different ways but didn't work..
+     -    Contacted TA tried different ways but didn't work.
+     -    Spent four days continuously to fix the issue.
 
 ## Getting Started
 
@@ -82,4 +83,4 @@ Copyright © 2020 Nirmala Abothu
 
 ## Project heroku deplyed link
 
-[Demo1](https://drive.google.com/file/d/1hBcaEDT-_XuuYgYySyMhnbGhbmTX0i42/view?usp=sharing)
+[App on Heroku](https://arcane-cliffs-33965.herokuapp.com/notes)
