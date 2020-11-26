@@ -41,11 +41,12 @@ Node modules
 -    App is working as expected in local but after deployed to Heroku ,the post and delete methods are not working as
      app taking too long for read and write file.Error logs says timeout for post and delete methods.
      contacted the following:
-     -    AskBCS Learing Assistant: they mentioned due to read and File system in api routes, app in not working on Heroku,
+     -    AskBCS Learning Assistant: they mentioned due to read and File system in api routes, app in not working on Heroku,
           then i removed read and write files and tried to save the notes but the saved data is not remaining in db.json file,
           it will be disappeared once the app close.
      -    Contacted TA tried different ways but didn't work.
-     -    Spent four days continuously to fix the issue.
+     -    Spent four days continuously to fix the issue,but still issue in Heroku app, read and write file system in API routes
+          causing issue.
 
 ## Getting Started
 
