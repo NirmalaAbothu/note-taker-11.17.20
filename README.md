@@ -17,7 +17,7 @@ In the middle of app displays with place holders as Note Title and Note Text,use
 Title and Note Text in place holder's section and click save button on right side of the upper corner,
 refresh the page then newly added notes will be added to Note Taker section.If user wants add more notes ,
 user can click on pen symbol on right side of the upper corner and can enter note title and text and click on save button.
-if user wants delete notes from the Note Taker list item,need to click on delete button besides the note in Note Taker section,that perticular item will be deleted from the list.
+if user wants delete notes from the Note Taker list items,need to click on delete button besides the note in Note Taker section,that perticular item will be deleted from the list.
 
 ## Implemented the following functionalities
 
@@ -39,7 +39,7 @@ Node modules
 -    Get challenged while developing api routes for fetching data from db to display on browser
      and finally figured out thru creating, const router = require("express").Router() and export router.
 -    App is working as expected in local but after deployed to Heroku ,the post and delete methods are not working as
-     app taking too long for read and write file.Error logs says timeout for post and deleted methods.
+     app taking too long for read and write file.Error logs says timeout for post and delete methods.
      contacted the following:
      -    AskBCS Learing Assistant: they mentioned due to read and File system in api routes, app in not working on Heroku,
           then i removed read and write files and tried to save the notes but the saved data is not remaining in db.json file,
