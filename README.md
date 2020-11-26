@@ -84,4 +84,4 @@ Copyright © 2020 Nirmala Abothu
 
 ## Project heroku deplyed link
 
-[App on Heroku](https://arcane-cliffs-33965.herokuapp.com/notes)
+[Note Taker](https://arcane-cliffs-33965.herokuapp.com/notes)
