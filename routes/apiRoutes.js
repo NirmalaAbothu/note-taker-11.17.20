@@ -76,24 +76,46 @@ router.post("/notes", function (req, res) {
 
 //api call to delete item from db.json file
 router.delete("/notes/:id", function (req, res) {
+     console.log("before1 delete");
      let idTodelete = req.params.id;
+     var count = Object.keys(db).length;
+     console.log(count);
+     console.log(idTodelete);
+     for (var i = 0; i < count; i++) {
+          console.log("before delete");
+          console.log(db[i].id);
+          if (db[i].id == idTodelete) {
+               db.splice(i, 1);
+               console.log(count);
+               console.log(db);
+               console.log("inside delete");
+          }
+     }
+     fs.writeFile(
+          path.join(__dirname, "../db/db.json"),
+          JSON.stringify(jsondb, null, 2),
+          (err) => {
+               if (err) throw err;
+          }
+     );
+     res.json(idTodelete);
 
-     fs.readFile("./db/db.json", "utf8", (err, data) => {
-          if (err) throw err;
-          var dbdata = JSON.parse(data);
-          var newNotes = dbdata.filter((note) => note.id != idTodelete);
+     // fs.readFile("./db/db.json", "utf8", (err, data) => {
+     //      if (err) throw err;
+     //      var dbdata = JSON.parse(data);
+     //      var newNotes = dbdata.filter((note) => note.id != idTodelete);
 
-          fs.writeFileSync(
-               "./db/db.json",
-               JSON.stringify(newNotes),
-               function (err) {
-                    if (err) throw err;
-                    console.log("note deleted");
+     //      fs.writeFileSync(
+     //           "./db/db.json",
+     //           JSON.stringify(newNotes),
+     //           function (err) {
+     //                if (err) throw err;
+     //                console.log("note deleted");
 
-                    res.status(200).end();
-               }
-          );
-     });
+     //                res.status(200).end();
+     //           }
+     //      );
+     // });
 });
 
 module.exports = router;
